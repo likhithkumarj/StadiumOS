@@ -295,123 +295,101 @@ export default function FanNavigate() {
             {/* Transit Terminals (Clickable) */}
             {/* Rail Station (Top Left) */}
             <g transform="translate(60, 60)" className="cursor-pointer group" onClick={() => setStartNode("rail-station")}>
-              <rect x="-18" y="-7" width="36" height="14" rx="3" className={`transition-all ${startNode === "rail-station" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
-              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "rail-station" ? "fill-pitch-night" : "fill-blue-400"}`}>RAIL</text>
+              <rect x="-18" y="-8" width="36" height="16" rx="4" className={`transition-all ${startNode === "rail-station" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="0" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[7.5px] font-bold ${startNode === "rail-station" ? "fill-pitch-night" : "fill-blue-400"}`}>RAIL</text>
             </g>
             {/* Bus Station (Top Right) */}
             <g transform="translate(340, 60)" className="cursor-pointer group" onClick={() => setStartNode("bus-station")}>
-              <rect x="-18" y="-7" width="36" height="14" rx="3" className={`transition-all ${startNode === "bus-station" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
-              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "bus-station" ? "fill-pitch-night" : "fill-blue-400"}`}>BUS</text>
+              <rect x="-18" y="-8" width="36" height="16" rx="4" className={`transition-all ${startNode === "bus-station" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="0" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[7.5px] font-bold ${startNode === "bus-station" ? "fill-pitch-night" : "fill-blue-400"}`}>BUS</text>
             </g>
             {/* Shuttle Stop (Bottom Center) */}
             <g transform="translate(200, 380)" className="cursor-pointer group" onClick={() => setStartNode("shuttle-stop")}>
-              <rect x="-24" y="-7" width="48" height="14" rx="3" className={`transition-all ${startNode === "shuttle-stop" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
-              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "shuttle-stop" ? "fill-pitch-night" : "fill-blue-400"}`}>SHUTTLE</text>
+              <rect x="-24" y="-8" width="48" height="16" rx="4" className={`transition-all ${startNode === "shuttle-stop" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="0" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[7.5px] font-bold ${startNode === "shuttle-stop" ? "fill-pitch-night" : "fill-blue-400"}`}>SHUTTLE</text>
             </g>
             {/* East Boulevard (Bottom Right) */}
             <g transform="translate(340, 340)" className="cursor-pointer group" onClick={() => setStartNode("east-boulevard")}>
-              <rect x="-18" y="-7" width="36" height="14" rx="3" className={`transition-all ${startNode === "east-boulevard" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
-              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "east-boulevard" ? "fill-pitch-night" : "fill-blue-400"}`}>WALK</text>
+              <rect x="-18" y="-8" width="36" height="16" rx="4" className={`transition-all ${startNode === "east-boulevard" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="0" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[7.5px] font-bold ${startNode === "east-boulevard" ? "fill-pitch-night" : "fill-blue-400"}`}>WALK</text>
             </g>
 
             {/* Inner Seating Zone Labels (pointer-events none to pass clicks to sectors) */}
             <g pointerEvents="none">
               <circle cx="200" cy="150" r="9" className={`stroke-1 ${endNode === "zone-1" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
-              <text x="200" y="153" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-1" ? "fill-pitch-night" : "fill-chalk"}`}>Z1</text>
+              <text x="200" y="150" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[8px] font-bold ${endNode === "zone-1" ? "fill-pitch-night" : "fill-chalk"}`}>Z1</text>
 
               <circle cx="250" cy="200" r="9" className={`stroke-1 ${endNode === "zone-2" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
-              <text x="250" y="203" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-2" ? "fill-pitch-night" : "fill-chalk"}`}>Z2</text>
+              <text x="250" y="200" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[8px] font-bold ${endNode === "zone-2" ? "fill-pitch-night" : "fill-chalk"}`}>Z2</text>
 
               <circle cx="200" cy="250" r="9" className={`stroke-1 ${endNode === "zone-3" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
-              <text x="200" y="253" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-3" ? "fill-pitch-night" : "fill-chalk"}`}>Z3</text>
+              <text x="200" y="250" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[8px] font-bold ${endNode === "zone-3" ? "fill-pitch-night" : "fill-chalk"}`}>Z3</text>
 
               <circle cx="150" cy="200" r="9" className={`stroke-1 ${endNode === "zone-4" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
-              <text x="150" y="203" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-4" ? "fill-pitch-night" : "fill-chalk"}`}>Z4</text>
+              <text x="150" y="200" dominantBaseline="central" textAnchor="middle" className={`font-mono text-[8px] font-bold ${endNode === "zone-4" ? "fill-pitch-night" : "fill-chalk"}`}>Z4</text>
             </g>
 
-            {/* Draw Gates (Clickable) with Live Queue Badges */}
+            {/* Draw Gates (Clickable) with Queue text labels below */}
             {/* Gate 1 */}
             <g transform="translate(200, 70)" className="cursor-pointer group" onClick={() => setStartNode("gate-1")}>
               <circle r="10" className={`${getGateColorClass("gate-1")} ${startNode === "gate-1" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G1</text>
+              <text y="0" dominantBaseline="central" textAnchor="middle" className="fill-pitch-night font-mono font-bold text-[8.5px]">G1</text>
               {g1 && g1.status !== "closed" && (
-                <g transform="translate(0, -15)">
-                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g1.queueTime}m</text>
-                </g>
+                <text x="0" y="16" dominantBaseline="central" textAnchor="middle" className="fill-[#8a9894] font-mono text-[7px] font-bold">{g1.queueTime}m wait</text>
               )}
             </g>
 
             {/* Gate 2 */}
             <g transform="translate(292, 108)" className="cursor-pointer group" onClick={() => setStartNode("gate-2")}>
               <circle r="10" className={`${getGateColorClass("gate-2")} ${startNode === "gate-2" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G2</text>
+              <text y="0" dominantBaseline="central" textAnchor="middle" className="fill-pitch-night font-mono font-bold text-[8.5px]">G2</text>
               {g2 && g2.status !== "closed" && (
-                <g transform="translate(14, -8)">
-                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g2.queueTime}m</text>
-                </g>
+                <text x="0" y="16" dominantBaseline="central" textAnchor="middle" className="fill-[#8a9894] font-mono text-[7px] font-bold">{g2.queueTime}m wait</text>
               )}
             </g>
 
             {/* Gate 3 */}
             <g transform="translate(330, 200)" className="cursor-pointer group" onClick={() => setStartNode("gate-3")}>
               <circle r="10" className={`${getGateColorClass("gate-3")} ${startNode === "gate-3" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G3</text>
+              <text y="0" dominantBaseline="central" textAnchor="middle" className="fill-pitch-night font-mono font-bold text-[8.5px]">G3</text>
               {g3 && g3.status !== "closed" && (
-                <g transform="translate(15, 0)">
-                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g3.queueTime}m</text>
-                </g>
+                <text x="0" y="16" dominantBaseline="central" textAnchor="middle" className="fill-[#8a9894] font-mono text-[7px] font-bold">{g3.queueTime}m wait</text>
               )}
             </g>
 
             {/* Gate 4 */}
             <g transform="translate(292, 292)" className="cursor-pointer group" onClick={() => setStartNode("gate-4")}>
               <circle r="10" className={`${getGateColorClass("gate-4")} ${startNode === "gate-4" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G4</text>
+              <text y="0" dominantBaseline="central" textAnchor="middle" className="fill-pitch-night font-mono font-bold text-[8.5px]">G4</text>
               {g4 && g4.status !== "closed" && (
-                <g transform="translate(14, 8)">
-                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g4.queueTime}m</text>
-                </g>
+                <text x="0" y="16" dominantBaseline="central" textAnchor="middle" className="fill-[#8a9894] font-mono text-[7px] font-bold">{g4.queueTime}m wait</text>
               )}
             </g>
 
             {/* Gate 5 */}
             <g transform="translate(200, 330)" className="cursor-pointer group" onClick={() => setStartNode("gate-5")}>
               <circle r="10" className={`${getGateColorClass("gate-5")} ${startNode === "gate-5" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G5</text>
+              <text y="0" dominantBaseline="central" textAnchor="middle" className="fill-pitch-night font-mono font-bold text-[8.5px]">G5</text>
               {g5 && g5.status !== "closed" && (
-                <g transform="translate(0, 15)">
-                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g5.queueTime}m</text>
-                </g>
+                <text x="0" y="16" dominantBaseline="central" textAnchor="middle" className="fill-[#8a9894] font-mono text-[7px] font-bold">{g5.queueTime}m wait</text>
               )}
             </g>
 
             {/* Gate 6 */}
             <g transform="translate(108, 292)" className="cursor-pointer group" onClick={() => setStartNode("gate-6")}>
               <circle r="10" className={`${getGateColorClass("gate-6")} ${startNode === "gate-6" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G6</text>
+              <text y="0" dominantBaseline="central" textAnchor="middle" className="fill-pitch-night font-mono font-bold text-[8.5px]">G6</text>
               {g6 && g6.status !== "closed" && (
-                <g transform="translate(-14, 8)">
-                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g6.queueTime}m</text>
-                </g>
+                <text x="0" y="16" dominantBaseline="central" textAnchor="middle" className="fill-[#8a9894] font-mono text-[7px] font-bold">{g6.queueTime}m wait</text>
               )}
             </g>
 
-            {/* Glowing "YOU ARE HERE" pin marker */}
+            {/* Glowing "YOU ARE HERE" GPS locator dot & radar pulse (Pointer-events none) */}
             {startCoord && (
-              <g className="transition-all duration-300">
+              <g className="transition-all duration-300 pointer-events-none">
                 <circle cx={startCoord.x} cy={startCoord.y} r="5" className="fill-none stroke-pitch-green animate-svg-ping" />
-                <circle cx={startCoord.x} cy={startCoord.y} r="5" className="fill-pitch-green stroke-pitch-night stroke-1 animate-pulse" />
-                <g transform={`translate(${startCoord.x}, ${startCoord.y - 12})`}>
-                  <rect x="-14" y="-10" width="28" height="12" rx="3" className="fill-pitch-green stroke-pitch-night stroke-1 shadow-md" />
-                  <text x="0" y="-2" className="fill-pitch-night font-mono font-bold text-[7px] text-anchor-middle">YOU</text>
-                  <polygon points="0,2 -3,-1 3,-1" className="fill-pitch-green" />
-                </g>
+                <circle cx={startCoord.x} cy={startCoord.y} r="5.5" className="fill-[#2e8b4f] stroke-pitch-night stroke-1" />
+                <circle cx={startCoord.x} cy={startCoord.y} r="1.8" className="fill-chalk" />
               </g>
             )}
           </svg>
