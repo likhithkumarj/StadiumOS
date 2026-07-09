@@ -73,3 +73,30 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Shortest path SVG march line animation */
+@keyframes svg-dash-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.animate-dash-flow {
+  animation: svg-dash-flow 1.2s linear infinite;
+}
+
+/* Custom SVG Ping animation (animates r to avoid transform-origin bugs in SVGs) */
+@keyframes svg-node-ping {
+  0% {
+    r: 4px;
+    opacity: 0.95;
+    stroke-width: 2.2px;
+  }
+  100% {
+    r: 18px;
+    opacity: 0;
+    stroke-width: 0.5px;
+  }
+}
+.animate-svg-ping {
+  animation: svg-node-ping 1.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}

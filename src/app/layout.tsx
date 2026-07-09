@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description: "AI-Powered Operations & Fan Companion Platform for FIFA World Cup 2026 Venues",
   manifest: "/manifest.json",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
 };
 

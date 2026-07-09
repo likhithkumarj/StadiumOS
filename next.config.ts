@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  devIndicators: {
+    // @ts-expect-error - devIndicator properties vary between Next versions
+    appIsrStatus: false,
+  },
 };
 
 export default nextConfig;

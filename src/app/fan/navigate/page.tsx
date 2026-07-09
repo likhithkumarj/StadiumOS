@@ -243,7 +243,7 @@ export default function FanNavigate() {
                   const coord = NODE_COORDINATES[nodeId];
                   return `${idx === 0 ? "M" : "L"} ${coord.x} ${coord.y}`;
                 }).join(" ")}
-                className="fill-none stroke-pitch-green stroke-[4px] stroke-linecap-round stroke-linejoin-round animate-[dash_2.5s_linear_infinite]"
+                className="fill-none stroke-pitch-green stroke-[4px] stroke-linecap-round stroke-linejoin-round animate-dash-flow"
                 style={{ strokeDasharray: "12, 6" }}
                 filter="url(#map-path-glow)"
               />
@@ -362,7 +362,7 @@ export default function FanNavigate() {
             {/* Glowing "YOU ARE HERE" pin marker */}
             {startCoord && (
               <g className="transition-all duration-300">
-                <circle cx={startCoord.x} cy={startCoord.y} r="15" className="fill-none stroke-pitch-green stroke-2 animate-ping" />
+                <circle cx={startCoord.x} cy={startCoord.y} r="5" className="fill-none stroke-pitch-green animate-svg-ping" />
                 <circle cx={startCoord.x} cy={startCoord.y} r="5" className="fill-pitch-green stroke-pitch-night stroke-1 animate-pulse" />
                 <g transform={`translate(${startCoord.x}, ${startCoord.y - 12})`}>
                   <rect x="-14" y="-10" width="28" height="12" rx="3" className="fill-pitch-green stroke-pitch-night stroke-1 shadow-md" />
