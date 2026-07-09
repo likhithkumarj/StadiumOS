@@ -66,6 +66,52 @@ export default function FanNavigate() {
   const g5 = state.gates.find(g => g.id === "gate-5");
   const g6 = state.gates.find(g => g.id === "gate-6");
 
+  // Helper to compile SVG path instructions with curved arcs along concourses/gates
+  const getPathD = (pathNodes: string[]) => {
+    if (!pathNodes || pathNodes.length === 0) return "";
+    
+    let d = "";
+    
+    const concourseOrder = ["concourse-a", "concourse-b", "concourse-c", "concourse-d"];
+    const gateOrder = ["gate-1", "gate-2", "gate-3", "gate-4", "gate-5", "gate-6"];
+    
+    for (let i = 0; i < pathNodes.length; i++) {
+      const nodeId = pathNodes[i];
+      const coord = NODE_COORDINATES[nodeId];
+      if (!coord) continue;
+      
+      if (i === 0) {
+        d += `M ${coord.x} ${coord.y}`;
+      } else {
+        const prevNodeId = pathNodes[i - 1];
+        
+        const isPrevConcourse = concourseOrder.includes(prevNodeId);
+        const isCurrConcourse = concourseOrder.includes(nodeId);
+        
+        const isPrevGate = gateOrder.includes(prevNodeId);
+        const isCurrGate = gateOrder.includes(nodeId);
+        
+        if (isPrevConcourse && isCurrConcourse) {
+          const idxFrom = concourseOrder.indexOf(prevNodeId);
+          const idxTo = concourseOrder.indexOf(nodeId);
+          const isClockwise = (idxTo === idxFrom + 1) || (idxFrom === 3 && idxTo === 0);
+          const sweep = isClockwise ? 1 : 0;
+          d += ` A 100 100 0 0 ${sweep} ${coord.x} ${coord.y}`;
+        } else if (isPrevGate && isCurrGate) {
+          const idxFrom = gateOrder.indexOf(prevNodeId);
+          const idxTo = gateOrder.indexOf(nodeId);
+          const isClockwise = (idxTo === idxFrom + 1) || (idxFrom === 5 && idxTo === 0);
+          const sweep = isClockwise ? 1 : 0;
+          d += ` A 130 130 0 0 ${sweep} ${coord.x} ${coord.y}`;
+        } else {
+          d += ` L ${coord.x} ${coord.y}`;
+        }
+      }
+    }
+    
+    return d;
+  };
+
   return (
     <div className="space-y-4">
       {/* Route Selector Panel */}
@@ -239,10 +285,7 @@ export default function FanNavigate() {
             {/* Draw Shortest Path glow overlay */}
             {routeResult && routeResult.path && (
               <path
-                d={routeResult.path.map((nodeId: string, idx: number) => {
-                  const coord = NODE_COORDINATES[nodeId];
-                  return `${idx === 0 ? "M" : "L"} ${coord.x} ${coord.y}`;
-                }).join(" ")}
+                d={getPathD(routeResult.path)}
                 className="fill-none stroke-pitch-green stroke-[4px] stroke-linecap-round stroke-linejoin-round animate-dash-flow"
                 style={{ strokeDasharray: "12, 6" }}
                 filter="url(#map-path-glow)"

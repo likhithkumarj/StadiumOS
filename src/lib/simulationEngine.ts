@@ -63,7 +63,7 @@ export const EDGES: GraphEdge[] = [
   { from: "gate-5", to: "gate-6", distance: 3, hasStairs: false, baseCapacity: 80 },
   { from: "gate-6", to: "gate-1", distance: 6, hasStairs: false, baseCapacity: 80 },
   
-  // Gates to Concourses
+  // Gates to Concourses (connecting to the nearest concourse sector)
   { from: "gate-1", to: "concourse-a", distance: 2, hasStairs: false, baseCapacity: 160 },
   { from: "gate-2", to: "concourse-a", distance: 3, hasStairs: false, baseCapacity: 140 },
   
@@ -71,21 +71,27 @@ export const EDGES: GraphEdge[] = [
   
   { from: "gate-4", to: "concourse-c", distance: 2, hasStairs: false, baseCapacity: 140 },
   
-  { from: "gate-5", to: "concourse-d", distance: 3, hasStairs: false, baseCapacity: 150 },
+  { from: "gate-5", to: "concourse-c", distance: 2, hasStairs: false, baseCapacity: 150 }, // South gate to South concourse
   { from: "gate-6", to: "concourse-d", distance: 2, hasStairs: false, baseCapacity: 130 },
   
-  // Concourses to Inner Seating Zones
-  { from: "concourse-a", to: "zone-1", distance: 3, hasStairs: false, baseCapacity: 120 },
-  { from: "concourse-a", to: "zone-2", distance: 5, hasStairs: true, baseCapacity: 100 }, // stairs here
+  // Interconnecting Concourses (Concourse Ring / Perimeter walkway loop)
+  { from: "concourse-a", to: "concourse-b", distance: 4, hasStairs: false, baseCapacity: 150 },
+  { from: "concourse-b", to: "concourse-c", distance: 4, hasStairs: false, baseCapacity: 150 },
+  { from: "concourse-c", to: "concourse-d", distance: 4, hasStairs: false, baseCapacity: 150 },
+  { from: "concourse-d", to: "concourse-a", distance: 4, hasStairs: false, baseCapacity: 150 },
   
-  { from: "concourse-b", to: "zone-2", distance: 2, hasStairs: false, baseCapacity: 130 },
-  { from: "concourse-b", to: "zone-3", distance: 4, hasStairs: false, baseCapacity: 110 },
+  // Concourses to Inner Seating Zones (entering stand from nearest concourse)
+  { from: "concourse-a", to: "zone-1", distance: 3, hasStairs: false, baseCapacity: 120 },
+  
+  // Zone 2 Stairs vs Elevator choice
+  { from: "concourse-b", to: "zone-2", distance: 2, hasStairs: true, baseCapacity: 130 }, // standard stairs entry
+  { from: "concourse-b", to: "zone-2", distance: 5, hasStairs: false, baseCapacity: 60 },  // accessible elevator entry
   
   { from: "concourse-c", to: "zone-3", distance: 2, hasStairs: false, baseCapacity: 140 },
   
-  { from: "concourse-d", to: "zone-4", distance: 3, hasStairs: true, baseCapacity: 90 }, // stairs here
-  { from: "concourse-d", to: "zone-3", distance: 4, hasStairs: false, baseCapacity: 110 },
-  { from: "concourse-a", to: "zone-4", distance: 6, hasStairs: false, baseCapacity: 100 }
+  // Zone 4 Stairs vs Elevator choice
+  { from: "concourse-d", to: "zone-4", distance: 3, hasStairs: true, baseCapacity: 90 },   // standard stairs entry
+  { from: "concourse-d", to: "zone-4", distance: 6, hasStairs: false, baseCapacity: 50 }   // accessible elevator entry
 ];
 
 export interface PathResult {
@@ -192,7 +198,7 @@ export function findShortestPath(
       e => (e.from === path[i] && e.to === path[i + 1]) || (e.to === path[i] && e.from === path[i + 1])
     );
 
-    if (edgeUsed?.hasStairs) {
+    if (edgeUsed?.hasStairs && !wheelchairMode) {
       hasAccessibilityAlert = true;
     }
 
