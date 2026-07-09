@@ -141,13 +141,13 @@ export default function FanNavigate() {
                 </feMerge>
               </filter>
               <radialGradient id="pitch-field-grad" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#1e462f" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#0d2418" stopOpacity="0.9" />
+                <stop offset="0%" stopColor="#2e8b4f" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#152a21" stopOpacity="0.8" />
               </radialGradient>
             </defs>
 
             {/* Stadium Grid Overlay background */}
-            <g opacity="0.06" stroke="#2e8b4f" strokeWidth="0.5">
+            <g opacity="0.05" stroke="#2e8b4f" strokeWidth="0.5">
               <line x1="50" y1="0" x2="50" y2="400" />
               <line x1="100" y1="0" x2="100" y2="400" />
               <line x1="150" y1="0" x2="150" y2="400" />
@@ -173,26 +173,67 @@ export default function FanNavigate() {
             <circle cx="200" cy="200" r="95" className="fill-none stroke-[#223d30]/30 stroke-0.5" />
             <circle cx="200" cy="200" r="105" className="fill-none stroke-[#223d30]/30 stroke-0.5" />
 
-            {/* Seating stands tiers concentric circles */}
-            <circle cx="200" cy="200" r="82" className="fill-none stroke-[#223d30]/50 stroke-1 stroke-dasharray-[1,2]" />
-            <circle cx="200" cy="200" r="74" className="fill-none stroke-[#223d30]/50 stroke-1 stroke-dasharray-[1,2]" />
-            <circle cx="200" cy="200" r="66" className="fill-none stroke-[#223d30]/50 stroke-1 stroke-dasharray-[1,2]" />
-            <circle cx="200" cy="200" r="58" className="fill-none stroke-[#223d30]/50 stroke-1 stroke-dasharray-[1,2]" />
+            {/* Interactive Seating Zone Curved Sectors */}
+            {/* Zone 1 (North) */}
+            <path
+              d="M 136.4,136.4 A 90,90 0 0,1 263.6,136.4 L 242.4,157.6 A 60,60 0 0,0 157.6,157.6 Z"
+              className={`cursor-pointer transition-all duration-200 ${
+                endNode === "zone-1"
+                  ? "fill-pitch-green/45 stroke-pitch-green stroke-2"
+                  : "fill-[#152a21]/70 stroke-[#223d30]/80 hover:fill-pitch-green/20"
+              }`}
+              onClick={() => setEndNode("zone-1")}
+            />
+            {/* Zone 2 (East) */}
+            <path
+              d="M 263.6,136.4 A 90,90 0 0,1 263.6,263.6 L 242.4,242.4 A 60,60 0 0,0 242.4,157.6 Z"
+              className={`cursor-pointer transition-all duration-200 ${
+                endNode === "zone-2"
+                  ? "fill-pitch-green/45 stroke-pitch-green stroke-2"
+                  : "fill-[#152a21]/70 stroke-[#223d30]/80 hover:fill-pitch-green/20"
+              }`}
+              onClick={() => setEndNode("zone-2")}
+            />
+            {/* Zone 3 (South) */}
+            <path
+              d="M 263.6,263.6 A 90,90 0 0,1 136.4,263.6 L 157.6,242.4 A 60,60 0 0,0 242.4,242.4 Z"
+              className={`cursor-pointer transition-all duration-200 ${
+                endNode === "zone-3"
+                  ? "fill-pitch-green/45 stroke-pitch-green stroke-2"
+                  : "fill-[#152a21]/70 stroke-[#223d30]/80 hover:fill-pitch-green/20"
+              }`}
+              onClick={() => setEndNode("zone-3")}
+            />
+            {/* Zone 4 (West) */}
+            <path
+              d="M 136.4,263.6 A 90,90 0 0,1 136.4,136.4 L 157.6,157.6 A 60,60 0 0,0 157.6,242.4 Z"
+              className={`cursor-pointer transition-all duration-200 ${
+                endNode === "zone-4"
+                  ? "fill-pitch-green/45 stroke-pitch-green stroke-2"
+                  : "fill-[#152a21]/70 stroke-[#223d30]/80 hover:fill-pitch-green/20"
+              }`}
+              onClick={() => setEndNode("zone-4")}
+            />
 
             {/* Seating bowl Sector Divider Aisles */}
-            <line x1="200" y1="200" x2="135" y2="135" stroke="#050b09" strokeWidth="2.5" />
-            <line x1="200" y1="200" x2="265" y2="135" stroke="#050b09" strokeWidth="2.5" />
-            <line x1="200" y1="200" x2="265" y2="265" stroke="#050b09" strokeWidth="2.5" />
-            <line x1="200" y1="200" x2="135" y2="265" stroke="#050b09" strokeWidth="2.5" />
+            <line x1="200" y1="200" x2="135" y2="135" stroke="#050b09" strokeWidth="2" opacity="0.6" />
+            <line x1="200" y1="200" x2="265" y2="135" stroke="#050b09" strokeWidth="2" opacity="0.6" />
+            <line x1="200" y1="200" x2="265" y2="265" stroke="#050b09" strokeWidth="2" opacity="0.6" />
+            <line x1="200" y1="200" x2="135" y2="265" stroke="#050b09" strokeWidth="2" opacity="0.6" />
 
-            {/* Center Football Pitch */}
+            {/* Center Football Pitch with Lawn Stripes */}
             <g transform="translate(0, 0)">
               <rect x="178" y="168" width="44" height="64" rx="2" fill="url(#pitch-field-grad)" stroke="#2e8b4f" strokeWidth="0.8" />
+              {/* Lawn stripes */}
+              <rect x="178" y="168" width="44" height="10" fill="#2e8b4f" opacity="0.12" />
+              <rect x="178" y="188" width="44" height="10" fill="#2e8b4f" opacity="0.12" />
+              <rect x="178" y="208" width="44" height="10" fill="#2e8b4f" opacity="0.12" />
+              
               <line x1="178" y1="200" x2="222" y2="200" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
-              <circle cx="200" cy="200" r="10" fill="none" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
+              <circle cx="200" cy="200" r="9" fill="none" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
               {/* Penalty boxes */}
-              <rect x="187" y="168" width="26" height="12" fill="none" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
-              <rect x="187" y="220" width="26" height="12" fill="none" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
+              <rect x="187" y="168" width="26" height="11" fill="none" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
+              <rect x="187" y="221" width="26" height="11" fill="none" stroke="#2e8b4f" strokeWidth="0.5" opacity="0.6" />
             </g>
 
             {/* Draw Shortest Path glow overlay */}
@@ -208,110 +249,112 @@ export default function FanNavigate() {
               />
             )}
 
-            {/* Transit Terminals */}
+            {/* Transit Terminals (Clickable) */}
             {/* Rail Station (Top Left) */}
-            <g transform="translate(60, 60)">
-              <rect x="-18" y="-7" width="36" height="14" rx="3" className="fill-[#0c1e2b] stroke-blue-500 stroke-1" />
-              <text y="3" className="fill-blue-400 font-mono text-[7px] font-bold text-anchor-middle">RAIL</text>
+            <g transform="translate(60, 60)" className="cursor-pointer group" onClick={() => setStartNode("rail-station")}>
+              <rect x="-18" y="-7" width="36" height="14" rx="3" className={`transition-all ${startNode === "rail-station" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "rail-station" ? "fill-pitch-night" : "fill-blue-400"}`}>RAIL</text>
             </g>
             {/* Bus Station (Top Right) */}
-            <g transform="translate(340, 60)">
-              <rect x="-18" y="-7" width="36" height="14" rx="3" className="fill-[#0c1e2b] stroke-blue-500 stroke-1" />
-              <text y="3" className="fill-blue-400 font-mono text-[7px] font-bold text-anchor-middle">BUS</text>
+            <g transform="translate(340, 60)" className="cursor-pointer group" onClick={() => setStartNode("bus-station")}>
+              <rect x="-18" y="-7" width="36" height="14" rx="3" className={`transition-all ${startNode === "bus-station" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "bus-station" ? "fill-pitch-night" : "fill-blue-400"}`}>BUS</text>
             </g>
             {/* Shuttle Stop (Bottom Center) */}
-            <g transform="translate(200, 380)">
-              <rect x="-24" y="-7" width="48" height="14" rx="3" className="fill-[#0c1e2b] stroke-blue-500 stroke-1" />
-              <text y="3" className="fill-blue-400 font-mono text-[7px] font-bold text-anchor-middle">SHUTTLE</text>
+            <g transform="translate(200, 380)" className="cursor-pointer group" onClick={() => setStartNode("shuttle-stop")}>
+              <rect x="-24" y="-7" width="48" height="14" rx="3" className={`transition-all ${startNode === "shuttle-stop" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "shuttle-stop" ? "fill-pitch-night" : "fill-blue-400"}`}>SHUTTLE</text>
             </g>
             {/* East Boulevard (Bottom Right) */}
-            <g transform="translate(340, 340)">
-              <rect x="-18" y="-7" width="36" height="14" rx="3" className="fill-[#0c1e2b] stroke-blue-500 stroke-1" />
-              <text y="3" className="fill-blue-400 font-mono text-[7px] font-bold text-anchor-middle">WALK</text>
+            <g transform="translate(340, 340)" className="cursor-pointer group" onClick={() => setStartNode("east-boulevard")}>
+              <rect x="-18" y="-7" width="36" height="14" rx="3" className={`transition-all ${startNode === "east-boulevard" ? "fill-pitch-green stroke-pitch-green" : "fill-[#0c1e2b] stroke-blue-500"} stroke-1`} />
+              <text y="3" className={`font-mono text-[7px] font-bold text-anchor-middle ${startNode === "east-boulevard" ? "fill-pitch-night" : "fill-blue-400"}`}>WALK</text>
             </g>
 
-            {/* Inner Seating Zone coordinates labels */}
-            <circle cx="200" cy="150" r="8" className="fill-chalk/10 stroke-[#8a9894]/40" />
-            <text x="200" y="153" className="fill-chalk font-display text-[8px] text-anchor-middle font-bold">Z1</text>
+            {/* Inner Seating Zone Labels (pointer-events none to pass clicks to sectors) */}
+            <g pointerEvents="none">
+              <circle cx="200" cy="150" r="9" className={`stroke-1 ${endNode === "zone-1" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
+              <text x="200" y="153" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-1" ? "fill-pitch-night" : "fill-chalk"}`}>Z1</text>
 
-            <circle cx="250" cy="200" r="8" className="fill-chalk/10 stroke-[#8a9894]/40" />
-            <text x="250" y="203" className="fill-chalk font-display text-[8px] text-anchor-middle font-bold">Z2</text>
+              <circle cx="250" cy="200" r="9" className={`stroke-1 ${endNode === "zone-2" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
+              <text x="250" y="203" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-2" ? "fill-pitch-night" : "fill-chalk"}`}>Z2</text>
 
-            <circle cx="200" cy="250" r="8" className="fill-chalk/10 stroke-[#8a9894]/40" />
-            <text x="200" y="253" className="fill-chalk font-display text-[8px] text-anchor-middle font-bold">Z3</text>
+              <circle cx="200" cy="250" r="9" className={`stroke-1 ${endNode === "zone-3" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
+              <text x="200" y="253" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-3" ? "fill-pitch-night" : "fill-chalk"}`}>Z3</text>
 
-            <circle cx="150" cy="200" r="8" className="fill-chalk/10 stroke-[#8a9894]/40" />
-            <text x="150" y="203" className="fill-chalk font-display text-[8px] text-anchor-middle font-bold">Z4</text>
+              <circle cx="150" cy="200" r="9" className={`stroke-1 ${endNode === "zone-4" ? "fill-pitch-green stroke-pitch-night" : "fill-[#050b09]/90 stroke-[#8a9894]/40"}`} />
+              <text x="150" y="203" className={`font-mono text-[8px] text-anchor-middle font-bold ${endNode === "zone-4" ? "fill-pitch-night" : "fill-chalk"}`}>Z4</text>
+            </g>
 
-            {/* Draw Gates with Live Queue Badges */}
+            {/* Draw Gates (Clickable) with Live Queue Badges */}
             {/* Gate 1 */}
-            <g transform="translate(200, 70)">
-              <circle r="9" className={getGateColorClass("gate-1") + " stroke-pitch-night stroke-1 cursor-pointer"} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8px] text-anchor-middle">G1</text>
+            <g transform="translate(200, 70)" className="cursor-pointer group" onClick={() => setStartNode("gate-1")}>
+              <circle r="10" className={`${getGateColorClass("gate-1")} ${startNode === "gate-1" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
+              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G1</text>
               {g1 && g1.status !== "closed" && (
-                <g transform="translate(0, -14)">
-                  <rect x="-11" y="-5" width="22" height="9" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[6.5px] font-semibold text-anchor-middle">{g1.queueTime}m</text>
+                <g transform="translate(0, -15)">
+                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
+                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g1.queueTime}m</text>
                 </g>
               )}
             </g>
 
             {/* Gate 2 */}
-            <g transform="translate(292, 108)">
-              <circle r="9" className={getGateColorClass("gate-2") + " stroke-pitch-night stroke-1 cursor-pointer"} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8px] text-anchor-middle">G2</text>
+            <g transform="translate(292, 108)" className="cursor-pointer group" onClick={() => setStartNode("gate-2")}>
+              <circle r="10" className={`${getGateColorClass("gate-2")} ${startNode === "gate-2" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
+              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G2</text>
               {g2 && g2.status !== "closed" && (
                 <g transform="translate(14, -8)">
-                  <rect x="-11" y="-5" width="22" height="9" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[6.5px] font-semibold text-anchor-middle">{g2.queueTime}m</text>
+                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
+                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g2.queueTime}m</text>
                 </g>
               )}
             </g>
 
             {/* Gate 3 */}
-            <g transform="translate(330, 200)">
-              <circle r="9" className={getGateColorClass("gate-3") + " stroke-pitch-night stroke-1 cursor-pointer"} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8px] text-anchor-middle">G3</text>
+            <g transform="translate(330, 200)" className="cursor-pointer group" onClick={() => setStartNode("gate-3")}>
+              <circle r="10" className={`${getGateColorClass("gate-3")} ${startNode === "gate-3" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
+              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G3</text>
               {g3 && g3.status !== "closed" && (
                 <g transform="translate(15, 0)">
-                  <rect x="-11" y="-5" width="22" height="9" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[6.5px] font-semibold text-anchor-middle">{g3.queueTime}m</text>
+                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
+                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g3.queueTime}m</text>
                 </g>
               )}
             </g>
 
             {/* Gate 4 */}
-            <g transform="translate(292, 292)">
-              <circle r="9" className={getGateColorClass("gate-4") + " stroke-pitch-night stroke-1 cursor-pointer"} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8px] text-anchor-middle">G4</text>
+            <g transform="translate(292, 292)" className="cursor-pointer group" onClick={() => setStartNode("gate-4")}>
+              <circle r="10" className={`${getGateColorClass("gate-4")} ${startNode === "gate-4" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
+              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G4</text>
               {g4 && g4.status !== "closed" && (
                 <g transform="translate(14, 8)">
-                  <rect x="-11" y="-5" width="22" height="9" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[6.5px] font-semibold text-anchor-middle">{g4.queueTime}m</text>
+                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
+                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g4.queueTime}m</text>
                 </g>
               )}
             </g>
 
             {/* Gate 5 */}
-            <g transform="translate(200, 330)">
-              <circle r="9" className={getGateColorClass("gate-5") + " stroke-pitch-night stroke-1 cursor-pointer"} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8px] text-anchor-middle">G5</text>
+            <g transform="translate(200, 330)" className="cursor-pointer group" onClick={() => setStartNode("gate-5")}>
+              <circle r="10" className={`${getGateColorClass("gate-5")} ${startNode === "gate-5" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
+              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G5</text>
               {g5 && g5.status !== "closed" && (
-                <g transform="translate(0, 14)">
-                  <rect x="-11" y="-5" width="22" height="9" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[6.5px] font-semibold text-anchor-middle">{g5.queueTime}m</text>
+                <g transform="translate(0, 15)">
+                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
+                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g5.queueTime}m</text>
                 </g>
               )}
             </g>
 
             {/* Gate 6 */}
-            <g transform="translate(108, 292)">
-              <circle r="9" className={getGateColorClass("gate-6") + " stroke-pitch-night stroke-1 cursor-pointer"} />
-              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8px] text-anchor-middle">G6</text>
+            <g transform="translate(108, 292)" className="cursor-pointer group" onClick={() => setStartNode("gate-6")}>
+              <circle r="10" className={`${getGateColorClass("gate-6")} ${startNode === "gate-6" ? "stroke-chalk stroke-2" : "stroke-pitch-night stroke-1"} transition-all group-hover:scale-110`} />
+              <text y="3.5" className="fill-pitch-night font-mono font-bold text-[8.5px] text-anchor-middle">G6</text>
               {g6 && g6.status !== "closed" && (
                 <g transform="translate(-14, 8)">
-                  <rect x="-11" y="-5" width="22" height="9" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
-                  <text y="2" className="fill-chalk font-mono text-[6.5px] font-semibold text-anchor-middle">{g6.queueTime}m</text>
+                  <rect x="-11" y="-5" width="22" height="10" rx="1.5" className="fill-pitch-night stroke-[#223d30]/60 stroke-0.5" />
+                  <text y="2" className="fill-chalk font-mono text-[7px] font-semibold text-anchor-middle">{g6.queueTime}m</text>
                 </g>
               )}
             </g>
