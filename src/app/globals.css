@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pitch-night: #0A1612;
+  --color-surface: #152A21;
+  --color-chalk: #F2F5F1;
+  --color-pitch-green: #2E8B4F;
+  --color-card-amber: #F5B841;
+  --color-card-red: #E8483A;
+  --color-trophy-gold: #C9A227;
+  
+  --font-display: var(--font-bebas-neue), sans-serif;
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+}
+
+:root {
+  --background: #0A1612;
+  --foreground: #F2F5F1;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Tabular numbers for all live counts to prevent jittering */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+/* Jumbotron Scoreboard Stat Flip Animation */
+@keyframes stat-tick {
+  0% {
+    transform: rotateX(0deg);
+    filter: brightness(1);
+  }
+  50% {
+    transform: rotateX(90deg);
+    filter: brightness(0.5);
+  }
+  100% {
+    transform: rotateX(0deg);
+    filter: brightness(1);
+  }
+}
+
+.animate-tick {
+  display: inline-block;
+  transform-origin: center;
+  animation: stat-tick 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-tick {
+    animation: none !important;
+  }
+}
+
+/* Standard accessibility outline focus rings */
+*:focus-visible {
+  outline: 2px solid var(--color-pitch-green);
+  outline-offset: 2px;
+}
+
+/* Hide scrollbars for chrome/safari/firefox for full UI app feeling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
